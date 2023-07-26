@@ -15,14 +15,12 @@ export default {
 <style scoped>
 /* Estilos do rodapé */
 .footer {
-  background-color: grey;
+  background-color: rgb(0, 0, 0);
   text-align: center;
-  color: black;
+  color: rgb(240, 0, 0);
   font-size: 16px;
-  padding: 1px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  padding: 10px;
+  position: relative;
   width: 100%;
 }
 </style>

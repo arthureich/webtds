@@ -19,7 +19,7 @@
       <button @click="increaseQuantity" class="quantity-button">+</button>
     </div>
     <!-- Botão para adicionar o produto ao carrinho -->
-    <button @click="adicionarAoCarrinho" class="add-to-cart-button">Adicionar ao Carrinho</button>
+    <button @click="adicionarAoCarrinho" class="btn btn-dark">Adicionar ao Carrinho</button>
   </div>
 </template>
 
@@ -64,15 +64,24 @@ export default {
 <style>
 /* Estilos do produto */
 .product {
-  border: 1px solid #ccc;
-  padding: 20px;
-  max-width: 170px;
+  border: 1px solid #000000;
+  padding: 10px;
+  width: 230px;
+  background-color: #969696;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-image {
-  text-align: center;
-  max-width: 100%;
-  margin-bottom: 10px;
+  width: 220px;
+  height: 200px;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
 }
 
 .product-name {
@@ -85,6 +94,7 @@ export default {
 }
 
 .product-price {
+  text-align: center;
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
@@ -92,6 +102,7 @@ export default {
 
 .product-quantity {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -112,8 +123,10 @@ export default {
   background-color: #333;
   color: #fff;
   padding: 10px 20px;
+  bottom: 0;
   border: none;
   cursor: pointer;
+  margin-top: auto;
 }
 </style>
 

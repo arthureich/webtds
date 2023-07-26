@@ -3,8 +3,9 @@
   <div class="cart">
     <!-- Título do carrinho de compras -->
     <h2>Carrinho de Compras</h2>
+    <p v-if="compraSucesso" class="success-message">{{ mensagemSucesso }}</p>
     <!-- Se não houver produtos no carrinho, mostra uma mensagem -->
-    <div v-if="produtos.length === 0">
+    <div v-if="produtos.length === 0 && !compraSucesso">
       <p>O carrinho está vazio.</p>
     </div>
     <!-- Se houver produtos no carrinho, mostra os produtos -->
@@ -30,7 +31,10 @@
         </div>
       </div>
       <!-- Total do carrinho -->
+      <div v-if= "!compraSucesso">
       <p class="cart-total">Total: R$ {{ total }}</p>
+      <button @click="comprar" class="comprar-btn">Comprar</button>
+      </div>
     </div>
   </div>
 </template>
@@ -44,6 +48,15 @@ export default {
       default: () => []
     }
   },
+
+  data() {
+    return {
+      carrinho: [], // Local data to hold cart items
+      compraSucesso: false,
+      mensagemSucesso: "",
+    };
+  },
+
   computed: {
     // Calcula o total do carrinho
     total() {
@@ -71,6 +84,20 @@ export default {
       updatedProds.splice(index, 1);
       this.$emit('update:produtos', updatedProds);
     },
+    comprar() {
+      // Comprar produtos do carrinho
+      this.carrinho = [];
+      this.compraSucesso = true;
+      this.mensagemSucesso =
+        this.produtos.length === 1
+          ? "Produto comprado com sucesso!"
+          : "Produtos comprados com sucesso!";
+      this.$emit('update:produtos', this.carrinho);
+      setTimeout(() => {
+        this.compraSucesso = false;
+        this.mensagemSucesso = "";
+      }, 3000);
+    },
   }
 }
 </script>
@@ -78,7 +105,8 @@ export default {
 <style>
 .cart {
   border: 1px solid #ccc;
-  padding: 20px;
+  min-width: 300px;
+  padding: 23px;
 }
 
 .cart h2 {
@@ -119,6 +147,21 @@ export default {
   font-size: 18px;
   font-weight: bold;
   margin-top: 20px;
+}
+
+.comprar-btn {
+  background-color: #4caf50;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.success-message {
+  margin-top: 10px;
+  color: #4caf50;
+  font-weight: bold;
 }
 </style>
 
