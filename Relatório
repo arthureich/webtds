@@ -1,0 +1,90 @@
+
+1- Introdução
+
+1.1 – Problema utilizado:
+  O projeto trata-se de aplicação web para uma loja de ferragens em que eu já estava realizando o desenvolvimento na linguagem java. Este projeto tem como objetivo simular uma aplicação comercial simples onde o usuário pode visualizar os  produtos, adicioná-los ao carrinho, ajustar a quantidade de cada item no carrinho e verificar o preço total do carrinho.
+
+1.2 – Apresentação das ferramentas:
+Para o desenvolvimento do projeto, foram utilizadas as ferramentas:
+Vue.js: É um popular framework JavaScript que foi escolhido para a construção das interfaces de usuário interativas e reativas do projeto. O Vue.js permite criar componentes reutilizáveis e combiná-los para formar uma aplicação completa, estes componentes interagem entre si tornando o desenvolvimento mais organizado e eficiente.
+Node.js: É uma plataforma que permite executar código JavaScript fora do navegador. Neste projeto, o Node.js foi usado para a criação do ambiente de desenvolvimento e para a instalação de dependências através do npm, além de compilar os códigos para testes durante o desenvolvimento.
+Bootstrap: É um framework CSS que facilita a estilização e o layout responsivo da página. O Bootstrap oferece uma série de componentes e estilos pré-definidos, o que agiliza o desenvolvimento e garante uma melhor aparência para a plataforma.
+NPM (Node Package Manager): É o gerenciador de pacotes do Node.js, responsável por instalar, compartilhar e distribuir módulos e bibliotecas JavaScript. Ele foi utilizado para instalar as dependências necessárias para o projeto.
+CSS (Cascading Style Sheets): É uma linguagem de estilo utilizada para definir a aparência e o layout dos elementos HTML. O CSS foi empregado para personalizar a estilização dos componentes e da página como um todo.
+
+2- Preparação do ambiente e instalação das ferramentas para construção do projeto:
+
+Antes de iniciar o desenvolvimento do projeto, é necessário instalar as ferramentas necessárias. Para isso, foram executados os seguintes passos:
+Instalar o Node.js: O Node.js foi instalado através do comando:
+   sudo snap install node --classic
+Instalar o Vue CLI: O Vue CLI é uma ferramenta que facilita a criação e o gerenciamento de projetos Vue.js. Para instalá-lo globalmente, foi executado o comando:
+       npm install -g @vue/cli
+O framework bootstrap foi instalado também em seguida, com o comando:
+            sudo npm install bootstrap
+Iniciar um novo projeto Vue: Com o Vue CLI instalado, é possível criar um novo projeto Vue usando o comando "vue create". Isso criará a estrutura básica do projeto com configurações pré-definidas.
+            vue create webtds
+Após o processo ser criado, foi acessado a pasta raiz do projeto e executado os seguintes comandos para instalação do bootstrap e bootstrapvue no diretório do projeto.
+            npm install bootstrap
+            npm install bootstrap-vue
+Em seguida, foi criado os componentes na pasta src/components através do comando “touch”.
+     touch src/components/NomeDoComponente.vue
+Foi instalado o pacote do Webpack como uma dependência de desenvolvimento em um projeto Node.js. O Webpack é uma ferramenta de empacotamento de módulos que permite agrupar e otimizar o código JavaScript, CSS e outros recursos do projeto. Ao executar esse comando, o npm irá baixar e instalar a versão mais recente do pacote Webpack no diretório do projeto:
+            npm install --save-dev webpack
+Por fim, após a finalização do desenvolvimento, pode-se executar o processo através do comando.
+            npm run serve
+
+
+
+
+3 – Componentes
+
+3.1 - Implementação dos componentes:
+
+O projeto é composto por quatro componentes principais que desempenham funções específicas:
+HeaderHtml.vue: Esse componente é responsável por renderizar o cabeçalho da página, que inclui o logotipo da loja e uma barra de navegação com links para diferentes seções do site, como "Início", "Produtos", "Sobre" e "Contato".
+ProdutoInfo.vue: Nesse componente, são exibidas as informações de um produto específico. Ele mostra a imagem do produto, seu nome, descrição e preço. 
+
+CarrinhoCompras.vue: Esse componente é responsável por exibir os produtos adicionados pelo usuário ao carrinho de compras. Ele mostra as informações dos produtos, incluindo imagem, nome, quantidade selecionada pelo usuário e preço total (quantidade multiplicada pelo preço unitário).
+
+FooterHtml.vue: Este último componente é responsável por renderizar o rodapé da página, que inclui informações sobre direitos autorais e detalhes adicionais sobre a loja. O rodapé é fixado na parte inferior da página, permanecendo visível independentemente da posição de rolagem.
+
+3.2 - Funcionalidade dos componentes:
+
+HeaderHtml.vue: O componente do cabeçalho permite ao usuário navegar para diferentes seções do site através dos links fornecidos na barra de navegação. Cada item do menu possui um evento de clique que redireciona o usuário para a página correspondente.
+ProdutoInfo.vue: Esse componente permite ao usuário visualizar os detalhes de um produto específico e ajustar a quantidade desejada do mesmo. O componente possui um método que é chamado através do botão "Adicionar ao Carrinho". Quando o botão é clicado, o produto é emitido como um evento para o componente CarrinhoCompras.vue, onde é adicionado ou atualizado no carrinho, possui também métodos de aumentar ou diminuir a quantidade, que são chamados quando o botão “+” e “-” são pressionados, respectivamente.
+CarrinhoCompras.vue: O componente do carrinho de compras exibe os produtos adicionados pelo usuário, juntamente com suas quantidades e seus preços individuais. Além disso, ele calcula o total do carrinho somando os preços de todos os produtos multiplicados por suas quantidades. O usuário pode ajustar a quantidade de um produto no carrinho clicando nos botões "+" e "-", ou removê-lo completamente clicando no botão "Remover". Todas as alterações no carrinho são refletidas instantaneamente na tela, sem a necessidade de recarregar a página. No carrinho de compras também há a possibilidade de realizar a compra, que irá esvaziar o carrinho e imprimir uma mensagem de compra realizada com sucesso. Essa mensagem possui um timeout, que irá sumir após um curto tempo, e voltando ao status de carrinho vazio.
+                                                                    
+
+4 – Plataforma Web:
+
+  A plataforma foi construída utilizando o framework Vue.js juntamente com as tecnologias HTML, CSS e JavaScript. O Vue.js é responsável por criar os componentes e gerenciar a interação entre eles. O componente principal da aplicação é o App.vue, que importa e renderiza os demais componentes.
+  A plataforma possui apenas uma página que implementa todos os quatro componentes, header no topo, footer no rodapé, e os componentes produto e carrinho entre elas interagindo entre si simultaneamente através de seus métodos e interação com o usuário.
+  O formato da plataforma é uma página web simples com uma seção de produtos, onde os componentes mencionados anteriormente são utilizados para exibir os produtos e gerenciar o carrinho de compras.
+  O bootstrap foi utilizado através de seus modelos e containers para deixar a interface mais apresentável e acessível, além de tornar a página responsiva.
+  O componente App.vue é o componente principal da aplicação e é responsável por  permitir a comunicação entre os componentes pais e filhos, props e eventos foram utilizados. Os produtos selecionados pelo usuário no componente ProdutoInfo.vue são emitidos como eventos para o componente pai app.vue, onde o carrinho de compras é gerenciado. O componente CarrinhoCompras.vue recebe os produtos do carrinho como uma prop e também emite eventos para atualizar o carrinho quando o usuário realiza ações, como aumentar ou diminuir a quantidade de um produto ou removê-lo do carrinho.
+  O Vue.js facilita a criação de componentes reutilizáveis, que podem ser combinados para formar a estrutura da página. Cada componente é composto por um template HTML, um script JavaScript e um bloco de estilo CSS, tornando o desenvolvimento organizado e modular.
+
+5 – Hospedagem Git:
+O projeto foi hospedado em um repositório Git na plataforma Codeberg.org, que oferece um ambiente de hospedagem gratuito para projetos de código aberto. O processo de hospedagem envolveu os seguintes passos:
+Criação de uma conta no Codeberg.org: Primeiramente, foi criada uma conta gratuita na plataforma Codeberg.org.
+Criação de um novo repositório: Dentro da conta, um novo repositório foi criado clicando em "New Repository". Foram fornecidos o nome do repositório, uma descrição e a definição da visibilidade como público ou privado.
+Configuração do repositório remoto: Após a criação do repositório, o projeto local foi configurado para apontar para o repositório remoto no Codeberg.org utilizando o comando:
+ git remote add origin https://codeberg.org/arthureich/webtds.git
+Envio do projeto para o repositório remoto: O projeto foi enviado para o repositório remoto no Codeberg.org utilizando os comandos "git add", "git commit" e "git push". Isso sincronizou o repositório local com o repositório remoto, tornando o projeto disponível para acesso e colaboração na plataforma.
+
+6 - Conclusão:
+ O projeto é uma boa simulação de uma loja virtual de ferragens desenvolvida com Vue.js, Node.js, Bootstrap e outras tecnologias. Os componentes vue implementados nos permitem visualizar os produtos, adicioná-los ao carrinho de compras e ajustar a quantidade de cada produto no carrinho de compras. Esses componentes permitiram-nos modularizar nosso código, tornando o desenvolvimento mais eficiente e fácil de manter. 
+ O processo de hospedar projetos em repositórios Git na plataforma Codeberg.org aumentou a visibilidade do projeto, forneceu oportunidades para colaborar com outros desenvolvedores e tornou o código-fonte do projeto publicamente acessível.
+ Em suma, o projeto é um exemplo de como o Vue.js e outras ferramentas podem ser combinados para criar uma aplicação web interativa e responsiva. O uso dos frameworks e ferramentas mostraram-se eficazes e adequados, simulando o comportamento de uma loja de compras online.
+
+7 - Referências Bibliográficas:
+
+https://codeberg.org/arthureich/webtds.git
+INCAU, Caio. Vue.js: Construa aplicações incríveis. 1. ed. [S. l.]: Casa do Código, 2017.
+HAMAMURA, Caio. Introdução ao Desenvolvimento Front-End com o Framework Vue.js. 2020. 
+FreeCodeCamp. Learn Node.js. Disponível em: https://yewtu.be/watch?v=RLtyhwFtXQA. Acesso em: 12/07/2023. 
+JAVASCRIPT Tutorial. In: W3schools. Disponível em: https://www.w3schools.com/js/default.asp. Acesso em: 12 jul. 2023.
+HTML Tutorial. In: W3schools. Disponível em: https://www.w3schools.com/html/default.asp. Acesso em: 12 jul. 2023.
+CSS Tutorial. In: W3schools. [S. l.], 2021. Disponível em: https://www.w3schools.com/css/default.asp. Acesso em: 12 jul. 2023.
+BOOTSTRAP 5 Tutorial. In: W3schools. [S. l.], 2021. Disponível em: https://www.w3schools.com/bootstrap5/index.php. Acesso em: 12 jul. 2023.
+
